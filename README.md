@@ -1,3 +1,68 @@
+# AoV SoundCheck (Web Version)
+
+A tool for comparing Arena of Valor `.bytes` files between the **TH (Thailand)** and **VNT (Vietnam)** servers. It shows which `Hero_*` and `Play_*` sound entries are shared and which exist on only one side.
+
+It runs entirely in your browser. **Your files are never uploaded anywhere and are never modified.**
+
+## How to use
+
+1. Open the page in a desktop browser (Chrome, Edge, or Firefox recommended).
+2. Under **TH**, click **Choose folder…** and select the folder containing the Thai `.bytes` files.
+3. Under **VNT**, do the same with the Vietnamese folder.
+   - Your browser will ask for permission to read the files. Allow it (files are only read locally).
+   - All subfolders are scanned automatically, and files are paired by **file name**.
+4. Click **Compare folders** (or press F5) and wait until the status bar at the bottom says Done.
+5. Pick a file from the list on the left to see its comparison.
+
+## Reading the results
+
+**Overview panel (left)** summarizes all files combined.
+
+| Color | Meaning |
+|---|---|
+| Green (Shared) | Entries present on both sides |
+| Red (TH only) | Entries present only on the Thai side |
+| Blue (VNT only) | Entries present only on the Vietnamese side |
+
+**File list (left)**
+- ✓ File with identical entries on both sides
+- ● File with differing entries (the number on the right is how many differ)
+- ⚠ File that exists on only one side
+- The search box filters by file name, and **Differences only** hides files that are fully identical
+
+**Results area (right)**
+- The badges at the top show the token count and decode status for each side:
+  - `ZSTD ✓` decoded successfully
+  - `Raw` the file is not compressed, so raw bytes are used
+  - `Decode failed` decoding failed and raw bytes are used instead (the file may be AES-encrypted or use a different dictionary version)
+  - `File missing` the file does not exist on that side
+- Filter buttons **All entries / Both / TH Only / VNT Only** and an entry search box
+- The table shows up to 3,000 rows at a time. If there are more, type in the search box to narrow it down.
+
+## Copying and exporting
+
+- Click a row to select it (Ctrl+click to select several).
+- Double-click, or press Ctrl+C, to copy the selected entries.
+- The **CSV / JSON / TXT** buttons at the top right export a report for **all files** (not limited to 3,000 rows).
+
+## Keyboard shortcuts
+
+| Key | Action |
+|---|---|
+| F5 | Start comparison |
+| Ctrl+F | Focus the entry search box |
+| Ctrl+E | Export CSV |
+| Ctrl+C | Copy selected entries |
+
+## Notes
+
+- Both folders must be selected before Compare is enabled.
+- If the same file name appears in several subfolders, the one found last is used.
+- Large folders may take a while. Progress is shown in the status bar.
+- Folder selection is not supported in many mobile browsers.
+- The tool only decodes Zstandard data that uses the AoV dictionary.
+[Uploading README.en.md…]()
+
 # AoV SoundCheck (เวอร์ชันเว็บ)
 
 เครื่องมือเปรียบเทียบไฟล์ `.bytes` ของ Arena of Valor ระหว่างเซิร์ฟเวอร์ **TH (ไทย)** และ **VNT (เวียดนาม)** เพื่อดูว่ามี entry เสียง `Hero_*` และ `Play_*` ตัวไหนที่ใช้ร่วมกัน หรือมีเฉพาะฝั่งใดฝั่งหนึ่ง
@@ -61,3 +126,6 @@
 - โฟลเดอร์ขนาดใหญ่อาจใช้เวลาสักครู่ ดูความคืบหน้าได้ที่แถบด้านล่าง
 - การเลือกโฟลเดอร์ไม่รองรับในเบราว์เซอร์มือถือหลายรุ่น
 - เครื่องมือนี้ถอดรหัสเฉพาะ Zstandard ที่ใช้ดิกชันนารีของ AoV เท่านั้น
+
+<img width="1297" height="869" alt="image" src="https://github.com/user-attachments/assets/bf6c4d62-8c11-4ca9-91a8-8e88c022aaa6" />
+
